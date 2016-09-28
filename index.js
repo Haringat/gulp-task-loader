@@ -48,9 +48,22 @@ module.exports = function(options) {
 	}
 
 	function loadTask(parents, task) {
-		var modulePath = path.join(process.cwd(), opts.dir, parents.join(path.sep) || '', task);
+		var namespace = parents.join(path.sep) || '';
+		var modulePath = path.join(process.cwd(), opts.dir, namespace, task);
 		var func = require(modulePath);
-		var dependencies = func.dependencies || [];
+		var dependencies = [];
+		if (func.dependencies && func.dependencies instanceof Array) {
+			func.dependencies.forEach(function(dep) {
+				// determine how many levels we need to walk up the tree
+				var prefixRegex = /^:*/;
+				var matches = dep.match(prefixRegex);
+				if (matches[0]) {
+					var depNamespace = parents.slice(0, parents.length - matches[0].length + 1).join(':');
+					dep = depNamespace + ':' + dep.replace(prefixRegex, '');
+				}
+				dependencies.push(dep);
+			});
+		}
 		var taskName = stripExtension(task);
 		var context = {
 			gulp: gulp,
@@ -58,9 +71,7 @@ module.exports = function(options) {
 		};
 
 		// If subtask -> namespace: "parent:child"
-		if (parents.length) {
-			taskName = parents.join(':') + ':' + taskName;
-		}
+		taskName = (namespace ? namespace.replace(new RegExp(path.sep, "g"), ':') + ':' : '') + taskName;
 
 		gulp.task(taskName, dependencies, func.bind(context));
 	}
