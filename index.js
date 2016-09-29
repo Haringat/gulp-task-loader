@@ -71,7 +71,7 @@ module.exports = function(options) {
 		};
 
 		// If subtask -> namespace: "parent:child"
-		taskName = (namespace ? namespace.replace(new RegExp(path.sep, "g"), ':') + ':' : '') + taskName;
+		taskName = (namespace ? namespace.replace(new RegExp(path.sep, 'g'), ':') + ':' : '') + taskName;
 
 		gulp.task(taskName, dependencies, func.bind(context));
 	}

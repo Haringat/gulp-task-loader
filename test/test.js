@@ -159,4 +159,22 @@ describe('gulp-task-loader', function() {
 			expect(getTask('annotate:docs:comment')).to.be.ok;
 		});
 	});
+
+	describe('relative tasks referenced with leading :', function() {
+		beforeEach(function() {
+			require('../index')('./test/relativeDependencies');
+		});
+
+		it('Should load task dependencies with one leading : from the same namespace', function() {
+			var task = getTask('subfolder:subTask2');
+			expect(task).to.be.ok;
+			expect(task.dep).to.eql(['subfolder:subTask1']);
+		});
+
+		it('Should load task dependencies with more than one leading : from the corresponding supernamespace', function() {
+			var task = getTask('subfolder:a:deep:folder:structure:deepTask');
+			expect(task).to.be.ok;
+			expect(task.dep).to.eql(['subfolder:subTask1']);
+		});
+	});
 });
