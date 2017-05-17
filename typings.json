@@ -1,0 +1,7 @@
+{
+  "name": "gulp-task-loader",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-filter": "registry:dt/gulp-filter#3.0.1+20160510010627"
+  }
+}

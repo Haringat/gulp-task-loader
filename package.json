@@ -1,35 +1,50 @@
 {
   "name": "gulp-task-loader",
-  "repository": "https://github.com/hontas/gulp-task-loader.git",
-  "version": "1.4.4",
+  "repository": "https://github.com/Haringat/gulp-task-loader.git",
+  "version": "0.0.1",
   "description": "Load gulp tasks from folder",
-  "main": "index.js",
+  "main": "lib/main.js",
+  "typings": "lib/main",
+  "engines": {
+    "node": ">=7.0.0"
+  },
   "scripts": {
-    "major": "npm version major -m 'New major version %s' && npm publish",
-    "minor": "npm version minor -m 'New minor version %s' && npm publish",
-    "patch": "npm version patch -m 'New patch version %s' && npm publish",
-    "postpublish": "git push --follow-tags",
-    "test": "eslint . && mocha --reporter dot",
-    "tdd": "npm run test -- --watch --reporter nyan"
+    "build": "tsc --project ./tsconfig.json",
+    "pretest": "tslint --project tsconfig.json && tsc",
+    "test": "node $NODE_DEBUG_OPTION node_modules/.bin/ava ./lib/main.spec.js"
   },
   "keywords": [
     "gulp",
     "task",
     "loader"
   ],
-  "author": "Pontus Lundin",
+  "author": "Haringat",
   "license": "MIT",
   "peerDependencies": {
     "gulp": "*"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coffee-script": "^1.10.0",
-    "eslint": "^2.7.0",
+    "@types/glob": "^5.0.30",
+    "@types/gulp": "^4.0.2",
+    "@types/gulp-concat": "0.0.29",
+    "@types/gulp-sourcemaps": "0.0.29",
+    "@types/gulp-uglify": "0.0.29",
+    "@types/node": "^7.0.0",
+    "@types/through2": "^2.0.32",
+    "@types/vinyl": "^2.0.0",
+    "@types/vinyl-fs": "0.0.28",
+    "ava": "^0.17.0",
+    "glob": "^7.1.1",
     "gulp": "^3.9.1",
-    "mocha": "^2.4.5"
-  },
-  "dependencies": {
-    "object-assign": "^4.0.1"
+    "gulp-ava": "^0.15.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.0.0",
+    "gulp-mirror": "^1.0.0",
+    "gulp-typescript": "^3.1.4",
+    "gulp-uglify": "^2.0.0",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.5",
+    "typings-npm-gulp": "file:///home/marcel/IdeaProjects/npm-gulp",
+    "vinyl": "^2.0.1"
   }
 }

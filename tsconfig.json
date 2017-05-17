@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2016",
+        "sourceMap": true,
+        "lib": [
+            "es5",
+            "es2015.promise",
+            "es2015.symbol",
+            "es2015.symbol.wellknown",
+            "es2015.core",
+            "es2015.iterable",
+            "es2015.generator"
+        ],
+        "typeRoots": ["./typings/*", "./node_modules/@types/", "./custom-typings"],
+        "declaration": true,
+        "outDir": "lib"
+    },
+    "exclude": [
+        "node_modules",
+        "lib"
+    ]
+}

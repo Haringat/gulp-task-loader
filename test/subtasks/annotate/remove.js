@@ -1,5 +1,11 @@
-'use strict';
+"use strict";
 
-module.exports = function() {
-	return 'remove';
+exports["__esModule"] = true;
+
+function task(done) {
+	done();
+}
+
+exports.default = {
+	fn: task
 };

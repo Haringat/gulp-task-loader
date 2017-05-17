@@ -1,5 +1,7 @@
-'use strict';
+"use strict";
 
-module.exports = function() {
-	return 'comment';
+exports["__esModule"] = true;
+
+exports.default = {
+	dependencies: ["::add", "::remove"]
 };

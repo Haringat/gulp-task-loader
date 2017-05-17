@@ -3,3 +3,5 @@ tmp
 
 npm-*
 .DS_Store
+.idea
+typings
