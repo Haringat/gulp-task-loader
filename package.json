@@ -1,5 +1,5 @@
 {
-  "name": "gulp-task-loader",
+  "name": "gulp-loadtasks",
   "repository": "https://github.com/Haringat/gulp-task-loader.git",
   "version": "0.0.1",
   "description": "Load gulp tasks from folder",
@@ -44,7 +44,6 @@
     "gulp-uglify": "^2.0.0",
     "ts-node": "^2.0.0",
     "typescript": "^2.1.5",
-    "typings-npm-gulp": "file:///home/marcel/IdeaProjects/npm-gulp",
     "vinyl": "^2.0.1"
   }
 }

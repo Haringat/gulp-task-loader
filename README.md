@@ -1,4 +1,4 @@
-# Gulp-loadTasks
+# Gulp-loadtasks
 
 This is a complete rewrite of hontas/gulp-task-loader with some additions.
 
